@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登录页面 - Vue 3</title>
+    <script>
+      // 在HTML渲染前预设主题，避免初始加载闪烁
+      (function() {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        // 预设CSS变量
+        const themes = {
+          light: {
+            '--background': '0 0% 100%',
+            '--foreground': '222.2 84% 4.9%',
+            '--primary': '262.1 83.3% 57.8%',
+            '--primary-foreground': '210 20% 98%',
+            '--secondary': '210 40% 96.1%',
+            '--secondary-foreground': '222.2 47.4% 11.2%',
+            '--muted': '210 40% 96.1%',
+            '--muted-foreground': '215.4 16.3% 46.9%',
+            '--accent': '210 40% 96.1%',
+            '--accent-foreground': '222.2 47.4% 11.2%',
+            '--destructive': '0 84.2% 60.2%',
+            '--destructive-foreground': '210 40% 98%',
+            '--border': '214.3 31.8% 91.4%',
+            '--input': '214.3 31.8% 91.4%',
+            '--ring': '262.1 83.3% 57.8%'
+          },
+          dark: {
+            '--background': '224 71% 4%',
+            '--foreground': '213 31% 91%',
+            '--primary': '262.1 83.3% 57.8%',
+            '--primary-foreground': '210 20% 98%',
+            '--secondary': '222.2 47.4% 11.2%',
+            '--secondary-foreground': '210 40% 98%',
+            '--muted': '223 47% 11%',
+            '--muted-foreground': '215.4 16.3% 56.9%',
+            '--accent': '216 34% 17%',
+            '--accent-foreground': '210 40% 98%',
+            '--destructive': '0 63% 31%',
+            '--destructive-foreground': '210 40% 98%',
+            '--border': '216 34% 17%',
+            '--input': '216 34% 17%',
+            '--ring': '262.1 83.3% 57.8%'
+          }
+        };
+        
+        const theme = themes[savedTheme];
+        if (theme) {
+          Object.entries(theme).forEach(([key, value]) => {
+            document.documentElement.style.setProperty(key, value);
+          });
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
